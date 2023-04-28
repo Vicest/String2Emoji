@@ -6,10 +6,12 @@ void emojify_str(char *msg) {
 	while (current_char) {
 		if (isalpha(current_char))
 			printf(":alphabet-white-%c:", tolower(current_char));
-		else if (isdigit(current_char))
-			printf(":t%c%c:", current_char,
-				(current_char == '3' ? 'a' : '\0'));//Really slack, why no :t3: ???
-		else if (current_char == '.')
+		else if (isdigit(current_char)) {
+			if (current_char == '0')
+				printf(":cc-zero:");
+			else
+				printf(":m%c:", current_char);
+		} else if (current_char == '.')
 			printf(":black_circle:");
 		else if (isspace(current_char))
 			printf(":sussy:");
